@@ -1,31 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070a13; /* Premium deeper dark slate */
-  --foreground: #f8fafc; /* Sleek light gray/white */
-  --primary: #10b981;    /* Emerald Green */
+  --background: #070a13;
+  --foreground: #f8fafc;
+  --primary: #10b981;
   --primary-glow: rgba(16, 185, 129, 0.15);
-  --secondary: #0f172a;  /* Dark Slate cards */
-  --secondary-glow: rgba(15, 23, 42, 0.6);
-  --border: #1e293b;     /* Slate border */
-  --card: #0b0f19;       /* Card background */
-  --card-hover: #111827; /* Card hover background */
+  --card: #0b0f19;
+  --border: #1e293b;
 }
 
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-primary-glow: var(--primary-glow);
-  --color-secondary: var(--secondary);
-  --color-secondary-glow: var(--secondary-glow);
-  --color-border-custom: var(--border);
-  --color-card-custom: var(--card);
-  --color-card-hover: var(--card-hover);
-  
-  --animate-pulse-slow: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;
-  --animate-float-delayed: float 6s ease-in-out infinite 3s;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
 }
 
 @keyframes float {
@@ -39,38 +28,82 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
-/* Premium background glow elements */
+/* Ensure all children respect viewport */
+* {
+  max-width: 100vw;
+}
+
+/* Responsive Background glow elements */
 .neon-glow-1 {
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(40px);
+  filter: blur(30px);
   z-index: 0;
   pointer-events: none;
+  opacity: 0.8;
 }
 
 .neon-glow-2 {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(99, 102, 241, 0.05) 0%, rgba(0, 0, 0, 0) 70%);
-  filter: blur(40px);
+  filter: blur(30px);
   z-index: 0;
   pointer-events: none;
+  opacity: 0.8;
 }
 
-/* Custom scrollbars */
+/* Tablet sizes */
+@media (min-width: 640px) {
+  .neon-glow-1 {
+    width: 350px;
+    height: 350px;
+    filter: blur(35px);
+    opacity: 0.9;
+  }
+
+  .neon-glow-2 {
+    width: 300px;
+    height: 300px;
+    filter: blur(35px);
+    opacity: 0.9;
+  }
+}
+
+/* Desktop sizes */
+@media (min-width: 1024px) {
+  .neon-glow-1 {
+    width: 500px;
+    height: 500px;
+    filter: blur(40px);
+    opacity: 1;
+  }
+
+  .neon-glow-2 {
+    width: 400px;
+    height: 400px;
+    filter: blur(40px);
+    opacity: 1;
+  }
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -85,7 +118,7 @@ body {
   background: #10b981;
 }
 
-/* Glassmorphism utility */
+/* Glassmorphism */
 .glass-panel {
   background: rgba(11, 15, 25, 0.7);
   backdrop-filter: blur(12px);
@@ -99,7 +132,7 @@ body {
   background: rgba(11, 15, 25, 0.85);
 }
 
-/* Glowing text for highlights */
+/* Glowing text */
 .glow-text {
   text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }

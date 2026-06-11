@@ -61,14 +61,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-[#070a13] text-[#f8fafc] overflow-x-hidden selection:bg-[#10b981] selection:text-[#070a13]">
-        {/* Neon Glow Effects (Global background blobs) */}
-        <div className="absolute top-[10%] left-[-10%] neon-glow-1" />
-        <div className="absolute top-[40%] right-[-10%] neon-glow-2" />
-        <div className="absolute top-[80%] left-[20%] neon-glow-1" />
-        
+      <body className="min-h-full flex flex-col bg-[#070a13] text-[#f8fafc] overflow-x-hidden selection:bg-[#10b981] selection:text-[#070a13] relative">
+        {/* Neon Glow Effects - Properly contained */}
+        <div className="fixed top-[5%] sm:top-[10%] left-0 -translate-x-1/2 neon-glow-1 opacity-60 sm:opacity-80" />
+        <div className="fixed top-[35%] sm:top-[40%] right-0 translate-x-1/2 neon-glow-2 opacity-60 sm:opacity-80" />
+        <div className="fixed top-[75%] sm:top-[80%] left-[20%] sm:left-[25%] neon-glow-1 opacity-60 sm:opacity-80" />
+
         <Header />
-        <main className="flex-grow z-10 relative">
+        <main className="flex-grow z-10 relative overflow-x-hidden w-full">
           {children}
         </main>
         <Footer />
